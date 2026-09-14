@@ -1,786 +1,530 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C'meGirl — Inspiration for Every Girl</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+  <title>C’meGirl — Inspiration for Everyday Life</title>
 
-:root{
-    --brown:#4a2c22;
-    --brown2:#704638;
-    --cream:#fff8f0;
-    --pink:#f3c9cc;
-    --pink2:#e9aeb5;
-    --peach:#f2c19f;
-    --sage:#c8d0bd;
-    --gold:#c6a15b;
-    --white:#ffffff;
-    --text:#3b2924;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:var(--cream);
-    color:var(--text);
-}
-
-nav{
-    width:100%;
-    background:#fffaf5;
-    padding:18px 6%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid #eadbd0;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-
-.logo{
-    font-family:Georgia,serif;
-    font-size:30px;
-    font-weight:bold;
-    color:var(--brown);
-}
-
-.logo span{
-    color:var(--pink2);
-}
-
-.nav-links{
-    display:flex;
-    gap:25px;
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:var(--brown);
-    font-weight:bold;
-}
-
-.hero{
-    margin:25px auto;
-    width:88%;
-    min-height:430px;
-    border-radius:30px;
-    background:linear-gradient(
-        135deg,
-        #f3c9cc 0%,
-        #f5d8bd 45%,
-        #cbd4bf 100%
-    );
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:50px 20px;
-}
-
-.hero-content{
-    max-width:700px;
-}
-
-.hero h1{
-    font-family:Georgia,serif;
-    font-size:70px;
-    color:var(--brown);
-    margin-bottom:15px;
-}
-
-.hero p{
-    font-size:19px;
-    line-height:1.7;
-    margin-bottom:28px;
-}
-
-.search-box{
-    width:100%;
-    max-width:600px;
-    margin:auto;
-    display:flex;
-    background:white;
-    border-radius:50px;
-    padding:7px;
-    box-shadow:0 10px 30px #70463825;
-}
-
-.search-box input{
-    flex:1;
-    border:0;
-    outline:none;
-    padding:16px 20px;
-    font-size:16px;
-    border-radius:50px;
-}
-
-.search-box button{
-    border:0;
-    background:var(--brown);
-    color:white;
-    padding:0 25px;
-    border-radius:40px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.categories{
-    padding:10px 6% 35px;
-    text-align:center;
-}
-
-.categories h2{
-    font-family:Georgia,serif;
-    color:var(--brown);
-    margin-bottom:20px;
-    font-size:30px;
-}
-
-.category-buttons{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-}
-
-.category-buttons button{
-    border:0;
-    padding:11px 20px;
-    border-radius:30px;
-    cursor:pointer;
-    background:#ead9cd;
-    color:var(--brown);
-    font-weight:bold;
-}
-
-.category-buttons button:hover,
-.category-buttons button.active{
-    background:var(--brown);
-    color:white;
-}
-
-.container{
-    width:88%;
-    margin:auto;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
-    padding-bottom:60px;
-}
-
-.card{
-    background:white;
-    border-radius:24px;
-    overflow:hidden;
-    box-shadow:0 8px 25px #4a2c2215;
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-6px);
-}
-
-.card-image{
-    height:300px;
-    position:relative;
-    overflow:hidden;
-}
-
-.card-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-}
-
-.card-image.fashion{
-    background:linear-gradient(135deg,#e8b9bf,#f4d3b5);
-}
-
-.card-image.beauty{
-    background:linear-gradient(135deg,#e7b0b7,#d9c0d7);
-}
-
-.card-image.room{
-    background:linear-gradient(135deg,#c6d0bc,#e7d2b8);
-}
-
-.card-image.lifestyle{
-    background:linear-gradient(135deg,#f1c39e,#e6aaa0);
-}
-
-.card-image.gifts{
-    background:linear-gradient(135deg,#c9b0a4,#e6c77d);
-}
-
-.tag{
-    position:absolute;
-    top:15px;
-    left:15px;
-    background:white;
-    color:var(--brown);
-    padding:7px 13px;
-    border-radius:20px;
-    font-size:12px;
-    font-weight:bold;
-}
-
-.save{
-    position:absolute;
-    top:12px;
-    right:12px;
-    width:40px;
-    height:40px;
-    border:0;
-    border-radius:50%;
-    background:white;
-    cursor:pointer;
-    font-size:19px;
-}
-
-.save.saved{
-    background:#e9aeb5;
-    color:white;
-}
-
-.card-content{
-    padding:20px;
-}
-
-.card-content h3{
-    font-family:Georgia,serif;
-    font-size:23px;
-    color:var(--brown);
-    margin-bottom:9px;
-}
-
-.card-content p{
-    font-size:14px;
-    line-height:1.6;
-    color:#725e55;
-    min-height:45px;
-}
-
-.card-bottom{
-    margin-top:18px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-}
-
-.view-button{
-    text-decoration:none;
-    background:var(--brown);
-    color:white;
-    padding:11px 17px;
-    border-radius:25px;
-    font-size:13px;
-    font-weight:bold;
-    display:inline-block;
-}
-
-.category-label{
-    font-size:12px;
-    color:#9a7666;
-    text-transform:uppercase;
-    font-weight:bold;
-}
-
-.about{
-    width:88%;
-    margin:20px auto 60px;
-    padding:55px;
-    border-radius:30px;
-    background:linear-gradient(
-        135deg,
-        #f1d4d1,
-        #f5d7b8,
-        #cbd2c1
-    );
-    text-align:center;
-}
-
-.about h2{
-    font-family:Georgia,serif;
-    font-size:40px;
-    color:var(--brown);
-    margin-bottom:15px;
-}
-
-.about p{
-    max-width:700px;
-    margin:auto;
-    line-height:1.8;
-}
-
-footer{
-    background:var(--brown);
-    color:white;
-    text-align:center;
-    padding:35px 20px;
-}
-
-footer h2{
-    font-family:Georgia,serif;
-    margin-bottom:10px;
-}
-
-footer p{
-    font-size:13px;
-    opacity:.8;
-    line-height:1.7;
-}
-
-.empty{
-    text-align:center;
-    padding:50px;
-    color:var(--brown);
-}
-
-@media(max-width:800px){
-
-    .nav-links{
-        display:none;
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .hero{
-        min-height:400px;
-        width:94%;
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f8f5f0;
+      color: #222;
     }
 
-    .hero h1{
-        font-size:48px;
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e8e3dc;
+      padding: 22px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      flex-wrap: wrap;
     }
 
-    .hero p{
-        font-size:16px;
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: -1px;
+      color: #222;
+      text-decoration: none;
     }
 
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:15px;
+    .logo span {
+      color: #c98c9c;
     }
 
-    .card-image{
-        height:230px;
+    nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
-    .card-content{
-        padding:15px;
+    nav a {
+      text-decoration: none;
+      color: #555;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
-    .card-content h3{
-        font-size:19px;
+    nav a:hover {
+      color: #c98c9c;
     }
 
-    .card-content p{
-        font-size:13px;
+    .hero {
+      text-align: center;
+      padding: 80px 20px 55px;
+      background: #f1e8e2;
     }
 
-    .card-bottom{
-        flex-direction:column;
-        align-items:flex-start;
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(38px, 7vw, 75px);
+      font-weight: normal;
+      line-height: 1.05;
+      margin-bottom: 20px;
     }
 
-    .about{
-        width:94%;
-        padding:35px 20px;
-    }
-}
-
-@media(max-width:500px){
-
-    .grid{
-        grid-template-columns:1fr;
+    .hero p {
+      max-width: 600px;
+      margin: auto;
+      color: #6d6660;
+      font-size: 15px;
+      line-height: 1.8;
     }
 
-    .card-image{
-        height:300px;
+    .search-area {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 35px 20px 15px;
+      flex-wrap: wrap;
     }
 
-    .hero h1{
-        font-size:42px;
+    .search-area input {
+      width: min(500px, 100%);
+      padding: 15px 18px;
+      border: 1px solid #d9d0c8;
+      background: white;
+      font-size: 14px;
+      outline: none;
     }
 
-    .search-box{
-        flex-direction:column;
-        background:transparent;
-        box-shadow:none;
-        gap:8px;
+    .search-area input:focus {
+      border-color: #c98c9c;
     }
 
-    .search-box input{
-        width:100%;
+    .search-area button {
+      padding: 15px 25px;
+      border: none;
+      background: #222;
+      color: white;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
-    .search-box button{
-        height:48px;
+    .search-area button:hover {
+      background: #c98c9c;
     }
-}
-</style>
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 25px 20px 45px;
+      flex-wrap: wrap;
+    }
+
+    .categories button {
+      border: 1px solid #d8cec6;
+      background: transparent;
+      color: #555;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: 0.2s;
+    }
+
+    .categories button:hover,
+    .categories button.active {
+      background: #222;
+      border-color: #222;
+      color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      padding: 0 20px 35px;
+    }
+
+    .section-title h2 {
+      font-family: Georgia, serif;
+      font-size: 35px;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .cards {
+      width: min(1200px, 90%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      padding-bottom: 80px;
+    }
+
+    .card {
+      background: white;
+      overflow: hidden;
+      border: 1px solid #eee7df;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 22px;
+    }
+
+    .card-category {
+      color: #c98c9c;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      font-weight: normal;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #777;
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .card a {
+      display: inline-block;
+      text-decoration: none;
+      color: #222;
+      border-bottom: 1px solid #222;
+      padding-bottom: 4px;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .card a:hover {
+      color: #c98c9c;
+      border-color: #c98c9c;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    footer p {
+      color: #cfcfcf;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 850px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 550px) {
+      header {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .hero {
+        padding-top: 55px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card-image {
+        height: 230px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<nav>
-    <div class="logo">C'me<span>Girl</span></div>
+  <header>
+    <a href="#" class="logo">C’me<span>Girl</span></a>
 
-    <div class="nav-links">
-        <a href="#explore">Explore</a>
-        <a href="#about">About</a>
+    <nav>
+      <a href="#inspiration">INSPIRATION</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Find Your Everyday<br>Inspiration</h1>
+
+    <p>
+      Discover ideas for fashion, beauty, rooms, lifestyle,
+      gifts, and everything that makes everyday life beautiful.
+    </p>
+  </section>
+
+  <section class="search-area">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search inspiration, for example: office outfit"
+      onkeydown="handleEnter(event)"
+    >
+
+    <button onclick="searchGoogle()">SEARCH</button>
+  </section>
+
+  <section class="categories">
+    <button class="active" onclick="openGoogle('fashion inspiration', this)">
+      FASHION
+    </button>
+
+    <button onclick="openGoogle('beauty inspiration', this)">
+      BEAUTY
+    </button>
+
+    <button onclick="openGoogle('room decor inspiration', this)">
+      ROOM
+    </button>
+
+    <button onclick="openGoogle('lifestyle inspiration', this)">
+      LIFESTYLE
+    </button>
+
+    <button onclick="openGoogle('gift ideas inspiration', this)">
+      GIFTS
+    </button>
+  </section>
+
+  <section id="inspiration">
+    <div class="section-title">
+      <h2>Explore Inspiration</h2>
+      <p>Choose a category to discover more ideas on Google.</p>
     </div>
-</nav>
 
-<section class="hero">
+    <div class="cards">
 
-    <div class="hero-content">
+      <article class="card">
+        <img
+          class="card-image"
+          src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80"
+          alt="Fashion inspiration"
+        >
 
-        <h1>C'me Girl.</h1>
+        <div class="card-content">
+          <div class="card-category">Fashion</div>
+          <h3>Everyday Outfit</h3>
+          <p>
+            Find outfit ideas for work, casual days,
+            weekend looks, and special occasions.
+          </p>
 
-        <p>
-            Find pretty things, fresh ideas,
-            and little inspirations for your everyday life.
-        </p>
-
-        <div class="search-box">
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search outfit, beauty, room..."
-                onkeyup="searchItems()"
-            >
-
-            <button onclick="searchItems()">
-                Search
-            </button>
-
+          <a href="https://www.google.com/search?tbm=isch&q=everyday+outfit+inspiration"
+             target="_blank">
+            VIEW INSPIRATION →
+          </a>
         </div>
+      </article>
+
+      <article class="card">
+        <img
+          class="card-image"
+          src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80"
+          alt="Beauty inspiration"
+        >
+
+        <div class="card-content">
+          <div class="card-category">Beauty</div>
+          <h3>Beauty Routine</h3>
+          <p>
+            Explore makeup looks, skincare routines,
+            hairstyles, and beauty inspiration.
+          </p>
+
+          <a href="https://www.google.com/search?tbm=isch&q=beauty+routine+inspiration"
+             target="_blank">
+            VIEW INSPIRATION →
+          </a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img
+          class="card-image"
+          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80"
+          alt="Room inspiration"
+        >
+
+        <div class="card-content">
+          <div class="card-category">Room</div>
+          <h3>Cozy Room</h3>
+          <p>
+            Discover bedroom ideas, cozy corners,
+            minimal interiors, and room decorations.
+          </p>
+
+          <a href="https://www.google.com/search?tbm=isch&q=cozy+room+decor+inspiration"
+             target="_blank">
+            VIEW INSPIRATION →
+          </a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img
+          class="card-image"
+          src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=900&q=80"
+          alt="Lifestyle inspiration"
+        >
+
+        <div class="card-content">
+          <div class="card-category">Lifestyle</div>
+          <h3>Slow Living</h3>
+          <p>
+            Get ideas for daily routines, journaling,
+            self-care, productivity, and simple living.
+          </p>
+
+          <a href="https://www.google.com/search?tbm=isch&q=slow+living+lifestyle+inspiration"
+             target="_blank">
+            VIEW INSPIRATION →
+          </a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img
+          class="card-image"
+          src="https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=900&q=80"
+          alt="Gift inspiration"
+        >
+
+        <div class="card-content">
+          <div class="card-category">Gifts</div>
+          <h3>Gift Ideas</h3>
+          <p>
+            Find thoughtful gift ideas for friends,
+            family, birthdays, and special moments.
+          </p>
+
+          <a href="https://www.google.com/search?tbm=isch&q=gift+ideas+inspiration"
+             target="_blank">
+            VIEW INSPIRATION →
+          </a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img
+          class="card-image"
+          src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80"
+          alt="Wardrobe inspiration"
+        >
+
+        <div class="card-content">
+          <div class="card-category">Fashion</div>
+          <h3>Wardrobe Ideas</h3>
+          <p>
+            Explore capsule wardrobes, outfit combinations,
+            styling ideas, and fashion trends.
+          </p>
+
+          <a href="https://www.google.com/search?tbm=isch&q=wardrobe+outfit+inspiration"
+             target="_blank">
+            VIEW INSPIRATION →
+          </a>
+        </div>
+      </article>
 
     </div>
+  </section>
 
-</section>
-
-<section class="categories" id="explore">
-
-    <h2>Find Your Inspiration</h2>
-
-    <div class="category-buttons">
-
-        <button class="active"
-        onclick="filterCategory('all',this)">
-            ALL
-        </button>
-
-        <button onclick="filterCategory('fashion',this)">
-            FASHION
-        </button>
-
-        <button onclick="filterCategory('beauty',this)">
-            BEAUTY
-        </button>
-
-        <button onclick="filterCategory('room',this)">
-            ROOM
-        </button>
-
-        <button onclick="filterCategory('lifestyle',this)">
-            LIFESTYLE
-        </button>
-
-        <button onclick="filterCategory('gifts',this)">
-            GIFTS
-        </button>
-
-    </div>
-
-</section>
-
-<main class="container">
-
-    <div class="grid" id="grid"></div>
-
-</main>
-
-<section class="about" id="about">
-
-    <h2>Made for Girls Like You.</h2>
-
+  <section id="about" class="section-title">
+    <h2>About C’meGirl</h2>
     <p>
-        C'meGirl is a little corner for inspiration —
-        from outfits and beauty finds to room ideas,
-        gifts, and everyday lifestyle moments.
-        Discover something you love and shop it through our links.
+      A small inspiration space for discovering beautiful ideas
+      from around the internet.
     </p>
+  </section>
 
-</section>
-
-<footer>
-
-    <h2>C'meGirl</h2>
-
+  <footer id="contact">
     <p>
-        Inspiration • Style • Beauty • Lifestyle
+      © 2026 C’meGirl — Inspiration for Everyday Life
     </p>
+  </footer>
 
-    <br>
+  <script>
+    function openGoogle(keyword, button) {
+      const googleUrl =
+        "https://www.google.com/search?tbm=isch&q=" +
+        encodeURIComponent(keyword);
 
-    <p>
-        Some links may be affiliate links.
-        We may earn a small commission at no extra cost to you.
-    </p>
+      window.open(googleUrl, "_blank");
 
-</footer>
+      const buttons = document.querySelectorAll(".categories button");
 
-<script>
+      buttons.forEach(function(item) {
+        item.classList.remove("active");
+      });
 
-const inspirations = [
-
-    {
-        id:1,
-        title:"Soft Brown Girl Outfit",
-        category:"fashion",
-        image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80",
-        description:"Simple brown outfit for your everyday soft girl look.",
-        link:"https://shopee.co.id/"
-    },
-
-    {
-        id:2,
-        title:"Everyday Beauty Essentials",
-        category:"beauty",
-        image:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=80",
-        description:"Little beauty things that make your routine feel prettier.",
-        link:"https://shopee.co.id/"
-    },
-
-    {
-        id:3,
-        title:"Warm Cozy Bedroom",
-        category:"room",
-        image:"https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80",
-        description:"Create a warm, calm and cozy bedroom.",
-        link:"https://shopee.co.id/"
-    },
-
-    {
-        id:4,
-        title:"Cute Everyday Bag",
-        category:"fashion",
-        image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80",
-        description:"A cute bag that goes with almost everything.",
-        link:"https://shopee.co.id/"
-    },
-
-    {
-        id:5,
-        title:"Self Care Night",
-        category:"lifestyle",
-        image:"https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=900&q=80",
-        description:"Make your night a little slower and more relaxing.",
-        link:"https://shopee.co.id/"
-    },
-
-    {
-        id:6,
-        title:"Pretty Gift Ideas",
-        category:"gifts",
-        image:"https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=900&q=80",
-        description:"Cute little gifts for someone special.",
-        link:"https://shopee.co.id/"
-    },
-
-    {
-        id:7,
-        title:"Neutral Outfit Inspiration",
-        category:"fashion",
-        image:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80",
-        description:"Neutral colors for an effortless everyday outfit.",
-        link:"https://shopee.co.id/"
-    },
-
-    {
-        id:8,
-        title:"Minimal Desk Setup",
-        category:"room",
-        image:"https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=900&q=80",
-        description:"Turn your workspace into a prettier place.",
-        link:"https://shopee.co.id/"
-    },
-
-    {
-        id:9,
-        title:"Pink Beauty Corner",
-        category:"beauty",
-        image:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80",
-        description:"A cute beauty corner for your daily routine.",
-        link:"https://shopee.co.id/"
+      button.classList.add("active");
     }
 
-];
+    function searchGoogle() {
+      const input = document.getElementById("searchInput");
+      const keyword = input.value.trim();
 
-let currentCategory="all";
-
-function displayItems(items){
-
-    const grid=document.getElementById("grid");
-
-    if(items.length===0){
-
-        grid.innerHTML=`
-        <div class="empty" style="grid-column:1/-1;">
-            <h2>Oops... nothing found 🤎</h2>
-            <p>Try another search.</p>
-        </div>`;
-
+      if (keyword === "") {
+        alert("Please type something to search.");
         return;
+      }
+
+      const googleUrl =
+        "https://www.google.com/search?tbm=isch&q=" +
+        encodeURIComponent(keyword + " inspiration");
+
+      window.open(googleUrl, "_blank");
     }
 
-    grid.innerHTML=items.map(item=>{
-
-        const saved=
-        localStorage.getItem("saved-"+item.id)==="true";
-
-        return `
-
-        <article class="card">
-
-            <div class="card-image ${item.category}">
-
-                <a
-                href="${item.link}"
-                target="_blank"
-                rel="noopener noreferrer">
-
-                    <img
-                    src="${item.image}"
-                    alt="${item.title}"
-                    onerror="this.style.display='none'">
-
-                </a>
-
-                <span class="tag">
-                    ${item.category}
-                </span>
-
-                <button
-                class="save ${saved?'saved':''}"
-                onclick="toggleSave(${item.id})">
-
-                    ${saved?'♥':'♡'}
-
-                </button>
-
-            </div>
-
-            <div class="card-content">
-
-                <h3>${item.title}</h3>
-
-                <p>${item.description}</p>
-
-                <div class="card-bottom">
-
-                    <span class="category-label">
-                        ${item.category}
-                    </span>
-
-                    <a
-                    class="view-button"
-                    href="${item.link}"
-                    target="_blank"
-                    rel="noopener noreferrer">
-
-                        Shop Inspiration →
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        `;
-
-    }).join("");
-
-}
-
-function filterCategory(category,button){
-
-    currentCategory=category;
-
-    document
-    .querySelectorAll(".category-buttons button")
-    .forEach(btn=>btn.classList.remove("active"));
-
-    button.classList.add("active");
-
-    applyFilters();
-}
-
-function searchItems(){
-
-    applyFilters();
-
-}
-
-function applyFilters(){
-
-    const search=
-    document
-    .getElementById("searchInput")
-    .value
-    .toLowerCase()
-    .trim();
-
-    const filtered=inspirations.filter(item=>{
-
-        const categoryMatch=
-        currentCategory==="all" ||
-        item.category===currentCategory;
-
-        const searchMatch=
-        item.title.toLowerCase().includes(search) ||
-        item.description.toLowerCase().includes(search) ||
-        item.category.toLowerCase().includes(search);
-
-        return categoryMatch && searchMatch;
-
-    });
-
-    displayItems(filtered);
-
-}
-
-function toggleSave(id){
-
-    const key="saved-"+id;
-
-    const current=
-    localStorage.getItem(key)==="true";
-
-    localStorage.setItem(key,!current);
-
-    applyFilters();
-
-}
-
-displayItems(inspirations);
-
-</script>
+    function handleEnter(event) {
+      if (event.key === "Enter") {
+        searchGoogle();
+      }
+    }
+  </script>
 
 </body>
-  </html>
+    </html>
